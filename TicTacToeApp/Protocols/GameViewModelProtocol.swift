@@ -18,4 +18,5 @@ protocol GameViewModelProtocol: ObservableObject {
     func makeMove(at index: Int)
     func restartGame()
     func resetToChoosePlayer()
+    func finishSession()
 }

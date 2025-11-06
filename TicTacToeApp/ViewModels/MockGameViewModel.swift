@@ -27,4 +27,9 @@ final class MockGameViewModel: GameViewModelProtocol {
            gameStarted = false
            model.reset(with: .x)
        }
+    func finishSession() {
+        model.reset(with: .x)
+            showWinnerAlert = false
+            showDrawAlert = false
+            gameStarted = false    }
 }

@@ -1,6 +1,8 @@
+// GameModel.swift
+
 import Foundation
 
-enum Player: String {
+enum Player: String, Codable {
     case x = "X"
     case o = "O"
 }
