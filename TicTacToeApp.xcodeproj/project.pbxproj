@@ -15,9 +15,22 @@
 		641093612EBB429E00C0F0B3 /* TicTacToeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		64E284B92EBCCF4D00F59D7B /* Exceptions for "TicTacToeApp" folder in "TicTacToeApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Package/Users/wa234895/Documents/mobileios/TicTacToeApp/TicTacToeApp/Package/DesignSystem,
+			);
+			target = 641093602EBB429E00C0F0B3 /* TicTacToeApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		641093632EBB429E00C0F0B3 /* TicTacToeApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				64E284B92EBCCF4D00F59D7B /* Exceptions for "TicTacToeApp" folder in "TicTacToeApp" target */,
+			);
 			path = TicTacToeApp;
 			sourceTree = "<group>";
 		};

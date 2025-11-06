@@ -87,6 +87,7 @@ struct GameView<VM: GameViewModelProtocol>: View {
                                 .font(.headline)
                             
                             GameBoardView(vm: vm)
+                                .padding(20)
                             
                             PrimaryButton(
                                 vm: PrimaryButtonViewModel(
