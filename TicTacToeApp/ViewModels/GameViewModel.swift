@@ -4,6 +4,7 @@
 //
 //  Created by AGRÉ William on 05/11/2025.
 //
+
 import Foundation
 import SwiftUI
 
@@ -17,33 +18,44 @@ final class GameViewModel: GameViewModelProtocol {
     @Published var playerXImage: UIImage? = nil
     @Published var playerOImage: UIImage? = nil
 
+    // --- Choisir le joueur qui commence ---
     func chooseStartingPlayer(_ player: Player) {
         startingPlayer = player
         model.reset(with: player)
-        gameStarted = true                           // <-- démarre la partie
+        gameStarted = true
     }
 
+    // --- Jouer un coup ---
     func makeMove(at index: Int) {
-        guard gameStarted else { return }            // ignore si non démarré
+        guard gameStarted else { return } // ignore si la partie n'a pas commencé
         model.makeMove(at: index)
 
-        if model.winner != nil {
+        if let winner = model.winner {   // ✅ variable locale pour corriger l'erreur
             showWinnerAlert = true
+            ScoreManager.shared.addWin(for: winner)
         } else if model.isBoardFull() {
             showDrawAlert = true
         }
     }
 
+    // --- Recommencer la partie en conservant le joueur de départ ---
     func restartGame() {
         model.reset(with: startingPlayer)
         showWinnerAlert = false
         showDrawAlert = false
-        gameStarted = true                            // conserve le choix initial
+        gameStarted = true
     }
 
-    // Optionnel : une fonction pour revenir au choix initial
+    // --- Revenir à l'écran de choix du joueur ---
     func resetToChoosePlayer() {
         gameStarted = false
-        model.reset(with: .x) // ou garder un état neutre
+        model.reset(with: .x) // ou un état neutre si tu préfères
+        showWinnerAlert = false
+        showDrawAlert = false
+    }
+
+    // --- Réinitialiser les scores ---
+    func resetScores() {
+        ScoreManager.shared.resetScores()
     }
 }

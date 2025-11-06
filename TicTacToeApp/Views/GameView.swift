@@ -18,6 +18,8 @@ struct GameView<VM: GameViewModelProtocol>: View {
     @StateObject var vm: VM
     @State private var showWinAnimation = false
     @State private var winner: Player? = nil
+    @StateObject private var scoreManager = ScoreManager.shared
+
     
     var body: some View {
         ZStack {
@@ -58,6 +60,29 @@ struct GameView<VM: GameViewModelProtocol>: View {
                     } else {
                         // --- Plateau du jeu ---
                         VStack(spacing: 20) {
+                            
+                            HStack(spacing: 40) {
+                                   VStack {
+                                       Text("Joueur X")
+                                           .foregroundColor(.white)
+                                       Text("\(scoreManager.scoreX)")
+                                           .font(.largeTitle)
+                                           .bold()
+                                           .foregroundColor(.yellow)
+                                   }
+
+                                   VStack {
+                                       Text("Joueur O")
+                                           .foregroundColor(.white)
+                                       Text("\(scoreManager.scoreO)")
+                                           .font(.largeTitle)
+                                           .bold()
+                                           .foregroundColor(.yellow)
+                                   }
+                               }
+                               .padding(.bottom, 10)
+
+                            
                             Text("Tour du joueur : \(vm.model.currentPlayer.rawValue)")
                                 .font(.headline)
                             
@@ -66,18 +91,28 @@ struct GameView<VM: GameViewModelProtocol>: View {
                             PrimaryButton(
                                 vm: PrimaryButtonViewModel(
                                     title: "Recommencer",
-                                    action: { vm.restartGame() }
+                                    action: {
+                                        vm.restartGame()
+                                    }
                                 )
                             )
+                            
 
                             
                             Button("Changer de symbole") {
                                 vm.resetToChoosePlayer()
+                                scoreManager.resetScores()
+                                
                             }
                             .font(.footnote)
                             .padding(.top, 8)
+                            .foregroundStyle(Color.white)
+                        }
+                        Button("🔁 Réinitialiser les scores") {
+                            scoreManager.resetScores()
                         }
                         .padding()
+                        .foregroundStyle(Color.white)
                     }
                 }
                 
