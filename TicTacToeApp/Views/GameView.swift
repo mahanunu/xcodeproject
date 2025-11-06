@@ -72,7 +72,7 @@ struct GameView<VM: GameViewModelProtocol>: View {
 
                             
                             Button("Changer de symbole") {
-                                vm.restartGame()
+                                vm.resetToChoosePlayer()
                             }
                             .font(.footnote)
                             .padding(.top, 8)
@@ -95,15 +95,14 @@ struct GameView<VM: GameViewModelProtocol>: View {
                 }
             }
             // Quand la victoire est détectée
-            .onChange(of: vm.showWinnerAlert) { newValue in
-                if newValue {
+            .onChange(of: vm.showWinnerAlert) {
+                if vm.showWinnerAlert {
                     winner = vm.model.winner
                     withAnimation(.easeInOut(duration: 0.5)) {
                         showWinAnimation = true
                     }
                 }
-            }
-            // Alertes
+            }            // Alertes
             .alert(isPresented: Binding(get: { vm.showWinnerAlert }, set: { vm.showWinnerAlert = $0 })) {
                 Alert(
                     title: Text("Victoire 🎉"),
