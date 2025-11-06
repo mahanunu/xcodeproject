@@ -84,13 +84,13 @@ DesignSystem personnalisé
 
 ## Lancer le projet
 
-1. Cloner le dépôt
+- Cloner le dépôt
    
 git clone https://github.com/mahanunu/xcodeproject.git
 cd TicTacToeApp
-3. Ouvrir le projet
+- Ouvrir le projet
 Ouvre TicTacToeApp.xcodeproj ou TicTacToeApp.xcworkspace dans Xcode.
-4. Lancer sur simulateur
+- Lancer sur simulateur
 Appuie sur dans Xcode pour exécuter le projet sur iPhone Simulator.
 
 Sélection du joueur	Plateau de jeu	Historique
